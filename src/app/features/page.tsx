@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import Features from "@/components/Features";
-import CTA from "@/components/CTA";
+import Features from "@/components/home/Features";
+import CTA from "@/components/home/CTA";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {

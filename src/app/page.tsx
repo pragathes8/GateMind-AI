@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Hero from "@/components/home/Hero";
+import Features from "@/components/home/Features";
+import CTA from "@/components/home/CTA";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "GateMind AI | AI-Powered GATE Preparation Platform",
