@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function Home() {
       <main style={{ position: "relative", zIndex: 10 }}>
         <Hero />
         <Features />
+        <CTA />
       </main>
 
       {/* Footer */}

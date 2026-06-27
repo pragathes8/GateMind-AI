@@ -260,6 +260,19 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
+.nav-link.active {
+  color: #C084FC !important;
+  font-weight: 600;
+}
+
+.hover-bright {
+  transition: var(--transition-fast);
+}
+
+.hover-bright:hover {
+  color: var(--text-primary) !important;
+}
+
 .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -1007,4 +1020,10 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(135deg, var(--color-teal), var(--color-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.input-focus-glow:focus {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+  background: rgba(255, 255, 255, 0.05) !important;
 }

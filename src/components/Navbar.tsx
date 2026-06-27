@@ -1,19 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const isActive = (path: string) => {
+    return pathname === path ? "nav-link active" : "nav-link";
   };
 
   return (
     <nav className="navbar">
       <div className="container navbar-container">
         {/* Logo */}
-        <a href="#" className="logo">
+        <Link href="/" className="logo">
           <div className="logo-icon">
             <svg
               width="20"
@@ -31,36 +38,56 @@ export default function Navbar() {
             </svg>
           </div>
           GateMind AI
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
         <ul className="nav-links desktop-nav">
           <li>
-            <a href="#features" className="nav-link">
+            <Link href="/features" className={isActive("/features")}>
               Features
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#tutor" className="nav-link">
+            <Link href="/ai-tutor" className={isActive("/ai-tutor")}>
               AI Tutor
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#planner" className="nav-link">
+            <Link href="/study-planner" className={isActive("/study-planner")}>
               Study Plan
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" className="nav-link">
+            <Link href="/about" className={isActive("/about")}>
               About
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/dashboard" className={isActive("/dashboard")}>
+              Dashboard
+            </Link>
           </li>
         </ul>
 
-        {/* CTA Button */}
-        <a href="#get-started" className="nav-cta">
-          Get Started
-        </a>
+        {/* Auth CTAs */}
+        <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
+          <Link
+            href="/login"
+            style={{
+              color: "var(--text-secondary)",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              transition: "var(--transition-fast)"
+            }}
+            className="hover-bright"
+          >
+            Sign In
+          </Link>
+          <Link href="/signup" className="nav-cta">
+            Get Started
+          </Link>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -79,29 +106,39 @@ export default function Navbar() {
       <div className={`mobile-nav ${isOpen ? "open" : ""}`}>
         <ul className="nav-links">
           <li>
-            <a href="#features" className="nav-link" onClick={toggleMenu}>
+            <Link href="/features" className={isActive("/features")} onClick={toggleMenu}>
               Features
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#tutor" className="nav-link" onClick={toggleMenu}>
+            <Link href="/ai-tutor" className={isActive("/ai-tutor")} onClick={toggleMenu}>
               AI Tutor
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#planner" className="nav-link" onClick={toggleMenu}>
+            <Link href="/study-planner" className={isActive("/study-planner")} onClick={toggleMenu}>
               Study Plan
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" className="nav-link" onClick={toggleMenu}>
+            <Link href="/about" className={isActive("/about")} onClick={toggleMenu}>
               About
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/dashboard" className={isActive("/dashboard")} onClick={toggleMenu}>
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link href="/login" className={isActive("/login")} onClick={toggleMenu}>
+              Sign In
+            </Link>
           </li>
         </ul>
-        <a href="#get-started" className="nav-cta" onClick={toggleMenu}>
+        <Link href="/signup" className="nav-cta" onClick={toggleMenu} style={{ width: "100%", textAlign: "center", marginTop: "1rem" }}>
           Get Started
-        </a>
+        </Link>
       </div>
     </nav>
   );

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
+import FeatureCard from "./FeatureCard";
 
 interface FeatureItem {
   id: string;
@@ -11,28 +12,6 @@ interface FeatureItem {
 
 export default function Features() {
   const features: FeatureItem[] = [
-    {
-      id: "smart-notes",
-      title: "Smart Notes",
-      description: "Generates semantic, structured study material from complex lectures, textbooks, and engineering reference guides automatically.",
-      icon: (
-        <svg
-          className="card-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-          <path d="M6 6h10" />
-          <path d="M6 10h10" />
-          <path d="M6 14h6" />
-        </svg>
-      ),
-    },
     {
       id: "ai-tutor",
       title: "AI Tutor",
@@ -56,8 +35,51 @@ export default function Features() {
       ),
     },
     {
-      id: "quiz-generator",
-      title: "Quiz Generator",
+      id: "smart-planner",
+      title: "Smart Planner",
+      description: "Generates custom preparation timelines, pacing schedules, and revision trackers tailored to your GATE paper disciplines.",
+      icon: (
+        <svg
+          className="card-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+      ),
+    },
+    {
+      id: "notes",
+      title: "Notes",
+      description: "Generates semantic, structured study material from complex lectures, textbooks, and engineering reference guides automatically.",
+      icon: (
+        <svg
+          className="card-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          <path d="M6 6h10" />
+          <path d="M6 10h10" />
+          <path d="M6 14h6" />
+        </svg>
+      ),
+    },
+    {
+      id: "mock-tests",
+      title: "Mock Tests",
       description: "Instantly compile mock exams, PYQs, and topic-wise practice modules with adaptive difficulty matching your skill profile.",
       icon: (
         <svg
@@ -78,28 +100,8 @@ export default function Features() {
       ),
     },
     {
-      id: "flashcards",
-      title: "Flashcards",
-      description: "Uses spaced repetition algorithms to optimize retention of formula sheets, standard constants, and engineering laws.",
-      icon: (
-        <svg
-          className="card-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M21 7.5H3" />
-          <path d="M7.5 21V3" />
-        </svg>
-      ),
-    },
-    {
-      id: "progress-tracking",
-      title: "Progress Tracking",
+      id: "analytics",
+      title: "Analytics",
       description: "Visualizes subject proficiency and accuracy over time, helping identify hidden weaknesses before the test day.",
       icon: (
         <svg
@@ -118,9 +120,9 @@ export default function Features() {
       ),
     },
     {
-      id: "study-planner",
-      title: "Study Planner",
-      description: "Generates custom preparation timelines, pacing schedules, and revision trackers tailored to your GATE paper disciplines.",
+      id: "revision",
+      title: "Revision",
+      description: "Uses spaced repetition algorithms to optimize retention of formula sheets, standard constants, and engineering laws.",
       icon: (
         <svg
           className="card-icon"
@@ -131,23 +133,55 @@ export default function Features() {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-          <line x1="16" y1="2" x2="16" y2="6" />
-          <line x1="8" y1="2" x2="8" y2="6" />
-          <line x1="3" y1="10" x2="21" y2="10" />
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M21 7.5H3" />
+          <path d="M7.5 21V3" />
+        </svg>
+      ),
+    },
+    {
+      id: "gate-predictor",
+      title: "GATE Predictor",
+      description: "Analyzes mock score patterns and historical data to predict your GATE rank, percentile, and PSU/IIT cutoff matchings.",
+      icon: (
+        <svg
+          className="card-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
+    },
+    {
+      id: "daily-challenges",
+      title: "Daily Challenges",
+      description: "Tackle high-yield, curated daily problems from core engineering subjects to maintain your study streak and sharpness.",
+      icon: (
+        <svg
+          className="card-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+          <path d="M4 22h16" />
+          <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 7H8a15.3 15.3 0 0 1 4-7z" />
         </svg>
       ),
     },
   ];
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  };
 
   return (
     <section className="features-section" id="features">
@@ -180,16 +214,13 @@ export default function Features() {
         {/* Features Grid */}
         <div className="features-grid">
           {features.map((feature, idx) => (
-            <div
+            <FeatureCard
               key={feature.id}
-              className={`feature-card animate-slide-up`}
-              style={{ animationDelay: `${(idx + 1) * 100}ms` }}
-              onMouseMove={handleMouseMove}
-            >
-              <div className="icon-wrapper">{feature.icon}</div>
-              <h3 className="card-title">{feature.title}</h3>
-              <p className="card-description">{feature.description}</p>
-            </div>
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              animationDelay={`${(idx + 1) * 100}ms`}
+            />
           ))}
         </div>
       </div>
